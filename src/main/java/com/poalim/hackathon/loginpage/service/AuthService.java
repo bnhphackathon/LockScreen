@@ -5,5 +5,5 @@ import java.net.URISyntaxException;
 
 public interface AuthService {
 
-    public boolean isValidUserAndOtp(String username, String otp) throws URISyntaxException, IOException, InterruptedException;
+    boolean isValidUserAndOtp(String username, String otp) throws URISyntaxException, IOException, InterruptedException;
 }
