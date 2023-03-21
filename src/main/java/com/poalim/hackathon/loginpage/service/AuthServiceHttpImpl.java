@@ -1,5 +1,6 @@
 package com.poalim.hackathon.loginpage.service;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.net.URI;
@@ -21,19 +22,22 @@ public class AuthServiceHttpImpl implements AuthService {
             Map<String, String> requestBody = new HashMap<>();
             requestBody.put("username", username);
             requestBody.put("otp", otp);
-            String jsonRequestBody;
-            jsonRequestBody = new ObjectMapper().writeValueAsString(requestBody);
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(new URI(API))
                     .header("Content-Type", "application/json")
-                    .POST(HttpRequest.BodyPublishers.ofString(jsonRequestBody))
+                    .header("userId", username)
+                    .header("otp", otp)
+                    .GET()
                     .build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            boolean isAuthenticated = Boolean.parseBoolean(response.body());
+            String responseBody = response.body();
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode jsonNode = mapper.readTree(responseBody);
+            boolean isAuthenticated = jsonNode.get("otpAuthenticate").asBoolean();
             System.out.println("Response from authMeServer: " + isAuthenticated);
             return isAuthenticated;
         } catch (Exception e) {
-            System.err.println("Error against validation api");
+            System.err.println("Error against validation api " + e);
             return false;
         }
     }

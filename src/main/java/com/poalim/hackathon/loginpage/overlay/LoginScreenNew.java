@@ -2,6 +2,7 @@ package com.poalim.hackathon.loginpage.overlay;
 
 import com.poalim.hackathon.loginpage.service.AuthService;
 import com.poalim.hackathon.loginpage.service.AuthServiceHttpImpl;
+import com.sun.jna.platform.win32.User32;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,8 +10,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
-import java.io.IOException;
-import java.net.URISyntaxException;
 
 public class LoginScreenNew extends JFrame implements MouseMotionListener, KeyListener {
     private static final long serialVersionUID = 1L;
