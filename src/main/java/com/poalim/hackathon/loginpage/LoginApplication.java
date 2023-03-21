@@ -8,4 +8,9 @@ public class LoginApplication {
         LoginScreenNew loginScreenNew = new LoginScreenNew();
         loginScreenNew.setVisible(true);
     }
+
+    public static void stop()
+    {
+        System.exit(0);
+    }
 }

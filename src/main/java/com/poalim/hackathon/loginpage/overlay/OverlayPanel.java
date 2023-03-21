@@ -22,7 +22,7 @@ public class OverlayPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         // Load the background image from file
-        Image backgroundImage = new ImageIcon("src/main/resources/logo.png  ").getImage();
+        Image backgroundImage = new ImageIcon("C:\\Users\\temp06\\IdeaProjects\\LockScreen\\src\\main\\resources\\logo.png").getImage();
         // Draw the image on the panel
         g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), null);
     }
